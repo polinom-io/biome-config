@@ -102,3 +102,22 @@ test('ignores context files synced into .ai/', () => {
 	});
 	assert.doesNotMatch(`${result.stdout}${result.stderr}`, /synced\.md/);
 });
+
+test('ignores files written by release-please', () => {
+	writeFileSync(
+		join(consumerDir, '.release-please-manifest.json'),
+		'{".":"1.0.0"}\n',
+	);
+	writeFileSync(
+		join(consumerDir, 'CHANGELOG.md'),
+		'# Changelog\n\n\n* entry\n',
+	);
+	const result = spawnSync(biomeBin, ['check', '.'], {
+		cwd: consumerDir,
+		encoding: 'utf8',
+	});
+	assert.doesNotMatch(
+		`${result.stdout}${result.stderr}`,
+		/release-please-manifest\.json|CHANGELOG\.md/,
+	);
+});

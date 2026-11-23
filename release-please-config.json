@@ -5,7 +5,8 @@
 			"release-type": "node",
 			"package-name": "@polinom-io/biome-config",
 			"include-component-in-tag": false,
-			"changelog-path": "CHANGELOG.md"
+			"changelog-path": "CHANGELOG.md",
+			"initial-version": "0.1.0"
 		}
 	}
 }
