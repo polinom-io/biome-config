@@ -1,0 +1,35 @@
+# Release PRs and vX.Y.Z tags with release-please; publishes the package to
+# GitHub Packages when a release is created.
+name: release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release-please:
+    permissions:
+      contents: read
+    uses: polinom-io/px-workflows-public/.github/workflows/release-please.yml@b40a04acb5f2282b124f9aecbf5b596cee8cfc56 # v0.1.0
+    with:
+      app-client-id: ${{ vars.PX_RELEASE_PLEASE_APP_CLIENT_ID }}
+    secrets:
+      app-private-key: ${{ secrets.PX_RELEASE_PLEASE_APP_PRIVATE_KEY }}
+
+  publish:
+    needs: release-please
+    if: needs.release-please.outputs.release_created == 'true'
+    permissions:
+      contents: read
+      packages: write
+    uses: polinom-io/px-workflows-public/.github/workflows/publish-node.yml@b40a04acb5f2282b124f9aecbf5b596cee8cfc56 # v0.1.0
+    with:
+      tag: ${{ needs.release-please.outputs.tag_name }}
+      build-script: ""
