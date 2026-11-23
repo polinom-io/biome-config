@@ -6,7 +6,12 @@
 		"useIgnoreFile": true
 	},
 	"files": {
-		"includes": ["**", "!**/.ai"]
+		"includes": [
+			"**",
+			"!**/.ai",
+			"!**/CHANGELOG.md",
+			"!**/.release-please-manifest.json"
+		]
 	},
 	"javascript": {
 		"formatter": {
