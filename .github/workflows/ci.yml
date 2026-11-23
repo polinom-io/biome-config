@@ -1,0 +1,24 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 9 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    permissions:
+      contents: read
+    uses: polinom-io/px-workflows-public/.github/workflows/ci-node.yml@b87d73819d9735c0b62e8d2bbfeb0ac4b0f6a6d7 # main (untagged)
+    with:
+      lint-script: check
+      build-script: ""
