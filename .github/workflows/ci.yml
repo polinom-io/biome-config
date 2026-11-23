@@ -18,7 +18,7 @@ jobs:
   ci:
     permissions:
       contents: read
-    uses: polinom-io/px-workflows-public/.github/workflows/ci-node.yml@b87d73819d9735c0b62e8d2bbfeb0ac4b0f6a6d7 # main (untagged)
+    uses: polinom-io/px-workflows-public/.github/workflows/ci-node.yml@b40a04acb5f2282b124f9aecbf5b596cee8cfc56 # v0.1.0
     with:
       lint-script: check
       build-script: ""
