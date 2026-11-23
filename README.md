@@ -12,20 +12,25 @@ Biome defaults, with one override:
 - Tabs, 80-column lines, semicolons, trailing commas on multiline lists, arrow parens always.
 - Linter: Biome `recommended` preset.
 - Respects `.gitignore` (VCS integration enabled).
+- Ignores `.ai/` (synced context) and the files release-please writes (`CHANGELOG.md`, `.release-please-manifest.json`).
 
 ## Install
 
-The package is published to GitHub Packages. Point the `@polinom-io` scope at it in `.npmrc`:
+The package is published to GitHub Packages, which requires authentication even to read.
 
-```ini
-@polinom-io:registry=https://npm.pkg.github.com
-```
+1. Create a GitHub token with the `read:packages` scope (a classic personal access token, or `gh auth refresh -s read:packages` and `gh auth token`).
+2. Map the `@polinom-io` scope and the token once in your user `~/.npmrc` (never in the repo; pnpm 12 only reads credentials from the user config):
 
-Then install it with Biome pinned to an exact version:
+   ```ini
+   @polinom-io:registry=https://npm.pkg.github.com
+   //npm.pkg.github.com/:_authToken=<token with read:packages>
+   ```
 
-```sh
-pnpm add -D -E @biomejs/biome @polinom-io/biome-config
-```
+3. Install it with Biome pinned to an exact version (peer range `>=2.6.8 <3`):
+
+   ```sh
+   pnpm add -D -E @biomejs/biome @polinom-io/biome-config
+   ```
 
 ## Use
 
