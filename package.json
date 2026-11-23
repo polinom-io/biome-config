@@ -1,0 +1,37 @@
+{
+	"name": "@polinom-io/biome-config",
+	"version": "0.1.0",
+	"description": "Polinom.io shared Biome configuration",
+	"license": "MIT",
+	"type": "module",
+	"exports": {
+		"./biome": "./biome.json"
+	},
+	"files": [
+		"biome.json"
+	],
+	"scripts": {
+		"check": "biome check .",
+		"test": "node --test test/*.test.ts",
+		"typecheck": "tsc"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/polinom-io/biome-config.git"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
+	},
+	"peerDependencies": {
+		"@biomejs/biome": ">=2.6.8 <3"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.6.8",
+		"@types/node": "26.6.6",
+		"typescript": "7.0.2"
+	},
+	"engines": {
+		"node": ">=26"
+	},
+	"packageManager": "pnpm@12.15.0"
+}
