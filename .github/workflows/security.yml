@@ -1,0 +1,24 @@
+# Secrets in the full git history (gitleaks) and known vulnerabilities in the
+# lockfile (OSV-Scanner). Job names `security / secrets` and
+# `security / dependencies` are stable for required checks.
+name: security
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 6 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: security-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  security:
+    permissions:
+      contents: read
+    uses: polinom-io/px-workflows-public/.github/workflows/security.yml@966ffd6eec9df7dbaefb5afe2e9f6be1656eeaf6 # v0.3.0
