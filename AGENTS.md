@@ -10,6 +10,7 @@ Polinom.io rules are synced into `.ai/` from px-context; edit them there. If you
 - `.ai/global.md`
 - `.ai/company-public.md`
 - `.ai/engineering/engineering.md`
+- `.ai/engineering/tech-stacks/tech-stacks.md`
 - `.ai/engineering/tech-stacks/node-typescript.md`
 
 Project context: `.ai/project-overview.md` and `.ai/business-rules.md`.
