@@ -1,4 +1,4 @@
-<!-- Polinom.io shared AI context v1.13.0. Managed centrally; don't edit it here. -->
+<!-- Polinom.io shared AI context v1.14.0. Managed centrally; don't edit it here. -->
 
 # Engineering standards
 
@@ -18,6 +18,7 @@
 - Types: feat, fix, perf, refactor, docs, test, build, ci, chore, style, revert. `!` or `BREAKING CHANGE:` = major.
 - Squash-merge only. The PR title must be a valid conventional commit; branch commits are free-form.
 - One logical change per PR. If the title needs "and", split it.
+- The PR body follows the org pull request template: `## Summary`, `## Test plan` (never empty; say what was not tested) and `## Checklist` with every item, ticked only when true. `gh pr create --body` skips the template, so write those sections yourself. Bots (release-please, context sync, Dependabot) are exempt.
 
 ## Branches
 
