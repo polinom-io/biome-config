@@ -2,6 +2,7 @@ name: ci
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
   push:
     branches: [main]
   schedule:
@@ -11,15 +12,15 @@ permissions:
   contents: read
 
 concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   ci:
     permissions:
       contents: read
       packages: read
-    uses: polinom-io/px-workflows-public/.github/workflows/ci-node.yml@966ffd6eec9df7dbaefb5afe2e9f6be1656eeaf6 # v0.3.0
+    uses: polinom-io/px-workflows-public/.github/workflows/ci-node.yml@eddfd496c8521463acda9201bcfd1563c917d2b7 # v0.6.0
     with:
       lint-script: check
       build-script: ""
