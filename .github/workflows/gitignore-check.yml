@@ -1,0 +1,19 @@
+name: gitignore
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gitignore-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  gitignore:
+    permissions:
+      contents: read
+    uses: polinom-io/px-workflows-public/.github/workflows/gitignore-check.yml@eddfd496c8521463acda9201bcfd1563c917d2b7 # v0.6.0
