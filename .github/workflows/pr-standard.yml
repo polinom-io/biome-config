@@ -15,4 +15,4 @@ jobs:
   pr-standard:
     permissions:
       contents: read
-    uses: polinom-io/px-workflows-public/.github/workflows/pr-standard.yml@2e306475fe0169aa85e7f23057401ad4718e26f5 # v0.4.0
+    uses: polinom-io/px-workflows-public/.github/workflows/pr-standard.yml@eddfd496c8521463acda9201bcfd1563c917d2b7 # v0.6.0
